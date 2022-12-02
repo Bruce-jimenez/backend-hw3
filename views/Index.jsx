@@ -7,6 +7,7 @@ const list = (pokemon) => {
         let pokeName = pokemon[i].name.substring(0,1).toUpperCase() + pokemon[i].name.substring(1);
         result.push(<li key={i}><a href={href}> {pokeName} </a></li>)
     }
+//Did two steps
     
     return result;
 }
