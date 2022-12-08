@@ -12,7 +12,7 @@ class Show extends React.Component{
         return (
             <div>
                 <h1> Gotta Catch 'Em All! </h1>             
-                <h2>{pokemon.name(0,1).toUpperCase() + pokemon.name.substring(1)}</h2>
+                <h2>{pokemon.name.substring(0,1).toUpperCase() + pokemon.name.substring(1)}</h2>
                 <img src = {jpG(pokemon.img)}></img> <a href = "/pokemon">Back</a>
             </div>
         )
