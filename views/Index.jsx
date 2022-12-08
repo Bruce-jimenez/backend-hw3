@@ -9,7 +9,7 @@ const list = (pokemon) => {
     }
 //Did two steps
     
-    return result;
+    return resultTags;
 }
 
 
