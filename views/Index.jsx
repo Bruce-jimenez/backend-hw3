@@ -27,7 +27,13 @@ class Index extends React.Component{
             <div>
                 <h1 style = {style}> See All the Pokemon! </h1>             
                 <ul> {list(pokemon)}</ul>
+            
+            <nav>
+                <a href = '/pokemon/New'> Create a New Pokemon Entry</a>
+            </nav>
+            
             </div>
+
         )
     }
 }
