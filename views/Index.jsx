@@ -1,16 +1,6 @@
 const React = require('react');
-
-const list = (pokemon) => {
-    let resultTags = [];
-    for(let i = 0; i < pokemon.length; i++) {
-        let href = `./pokemon/${i}`;
-        let pokeName = pokemon[i].name.substring(0,1).toUpperCase() + pokemon[i].name.substring(1);      
-        resultTags.push(<li key={i}> <a href={href}> {pokeName} </a> </li>)
-    }
-//Did two steps
-    
-    return resultTags;
-}
+const DefaultLayout = require('./Default');
+  
 
 
 const style = {
@@ -21,20 +11,27 @@ const style = {
 
 class Index extends React.Component{
     render(){
-        const pokemon = this.props.pokemon;
-     
         return (
-            <div>
-                <h1 style = {style}> See All the Pokemon! </h1>             
-                <ul> {list(pokemon)}</ul>
-            
-            <nav>
-                <a href = '/pokemon/New'> Create a New Pokemon Entry</a>
-            </nav>
-            
-            </div>
-
-        )
-    }
+            <DefaultLayout title={"Pokemon Index Page"}> 
+                <h1 style={style}> See All The Pokemon! </h1>
+                <ul>
+                {this.props.pokemon.map((pokemon, i) => {
+                    return (
+                        <li><a href={`/pokemon/${pokemon.id}`}>{pokemon.name.substring(0,1).toUpperCase() + pokemon.name.substring(1)}</a>
+                        <br />
+                  <a href={`/pokemon/${pokemon._id}/edit`}>Mod</a>
+                  <form action={`/pokemon/${pokemon._id}?_method=DELETE`} method="POST">
+                      <input type="submit" value="DELETE"/>
+                  </form>
+                        </li>
+                    )
+                })}    
+                </ul>
+                <nav>
+                    <a href="/pokemon/new">Add a new pokemon</a>
+                </nav>
+            </DefaultLayout>    
+             );
+        }
 }
 module.exports = Index;
